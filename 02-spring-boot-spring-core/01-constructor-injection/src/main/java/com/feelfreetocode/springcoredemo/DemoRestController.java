@@ -1,0 +1,22 @@
+package com.feelfreetocode.springcoredemo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DemoRestController {
+    private Coach myCoach;
+
+    @Autowired
+    public DemoRestController(Coach theCoach) {
+        System.out.println("Demo REst Controller Constructor called...");
+        myCoach = theCoach;
+    }
+
+    @GetMapping("/daily-workout")
+    public String getDailyWorkout(){
+        System.out.println("Get Daily workout called...");
+        return  this.myCoach.getDailyWorkout();
+    }
+}
